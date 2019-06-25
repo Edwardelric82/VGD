@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
 
     public int currentLevel = 1;
 
-    public int highestLevel = 2;
+    public int highestLevel = 3;
 
     
 
@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour {
     {
         score = 0;
 
-        currentLevel = 1;
+        
 
         SceneManager.LoadScene("Level" + currentLevel);
     }

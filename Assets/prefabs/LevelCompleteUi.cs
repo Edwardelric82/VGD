@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameOverUiManager : MonoBehaviour
+public class LevelCompleteUi : MonoBehaviour
 {
 
     public Text Score;
@@ -21,16 +21,25 @@ public class GameOverUiManager : MonoBehaviour
         
     }
     
-    public void RestartGame()
+    public void RestartLevel()
+    {
+        
+        GameManager.Instance.Reset();
+
+    }
+
+    public void NextLevel()
     {
 
-        GameManager.Instance.Reset();
+        GameManager.Instance.IncreaseLevel();
 
     }
 
     public void menuGame()
     {
+
         SceneManager.LoadScene("Home");
+
     }
     
 }

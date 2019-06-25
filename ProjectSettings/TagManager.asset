@@ -7,6 +7,8 @@ TagManager:
   - Pick Up
   - beer
   - Enemy
+  - levelup
+  - death
   layers:
   - Default
   - TransparentFX

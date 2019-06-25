@@ -201,7 +201,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            _moveDirection.y -= Gravity * Time.deltaTime;
+            _moveDirection.y -= Gravity ;
 
             _characterController.Move(_moveDirection * Time.deltaTime);
         }
