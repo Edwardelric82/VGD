@@ -205,7 +205,7 @@ public class PlayerController : MonoBehaviour
             _moveDirection.y -= Gravity ;
 =======
             _moveDirection.y -= Gravity;
->>>>>>> refs/remotes/origin/master
+>>>>>>> 7ea04c5cc3b34802fff375e9ba0de86a1400a717
 
             _characterController.Move(_moveDirection * Time.deltaTime);
         }
