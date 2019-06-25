@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
 
     public int highestLevel = 2;
 
+    
 
     void Awake()
     {
@@ -33,7 +34,7 @@ public class GameManager : MonoBehaviour {
         // Dont destroy on reloading the scene
         DontDestroyOnLoad(gameObject);
 
- 
+        
     }
 
     public void IncreaseScore(int amount)

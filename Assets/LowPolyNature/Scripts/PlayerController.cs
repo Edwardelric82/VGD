@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject Hand;
 
+    
+
     public hudmanager hud;
 
     public float JumpSpeed = 7.0f;
@@ -225,6 +227,21 @@ public class PlayerController : MonoBehaviour
 
         }
         else if(other.gameObject.tag == "Enemy")
+        {
+
+            print("game over");
+
+            SceneManager.LoadScene("Game Over");
+
+        }
+        else if (other.gameObject.tag == "levelup")
+        {
+
+            GameManager.Instance.IncreaseLevel();
+
+
+        }
+        else if (other.gameObject.tag == "death")
         {
 
             print("game over");
