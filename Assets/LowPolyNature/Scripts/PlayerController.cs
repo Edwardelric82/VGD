@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
 
     private int count;
 
+    private float timer = 4f;
+
     #endregion
 
     #region Public Members
@@ -191,7 +193,7 @@ public class PlayerController : MonoBehaviour
                 if (Input.GetButton("Jump"))
                 {
                     _animator.SetBool("is_in_air", true);
-                    _moveDirection.y = JumpSpeed;
+                    _moveDirection.y = JumpSpeed ;
 
                 }
                 else
@@ -228,14 +230,6 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
 
         }
-        else if(other.gameObject.tag == "Enemy")
-        {
-
-            print("game over");
-
-            SceneManager.LoadScene("Game Over");
-
-        }
         else if (other.gameObject.tag == "levelup")
         {
 
@@ -243,12 +237,27 @@ public class PlayerController : MonoBehaviour
 
 
         }
-        else if (other.gameObject.tag == "death")
+        else if (other.gameObject.tag == "death" || other.gameObject.tag == "Enemy")
         {
 
             print("game over");
 
-            SceneManager.LoadScene("Game Over");
+            
+
+            _animator.SetTrigger("death");
+
+
+
+            DisableControl();
+
+            timer -= Time.deltaTime;
+
+            if (timer == 0)
+            {
+                SceneManager.LoadScene("Game Over");
+            }
+
+            
 
         }
         else if (other.gameObject.tag == "PowerJump")
@@ -268,15 +277,10 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        InteractableItemBase item = other.GetComponent<InteractableItemBase>();
-        if (item != null)
-        {
-           // Hud.CloseMessagePanel();
-            mInteractItem = null;
-        }
-    }
+    
 
     
+    
+
 }
+
