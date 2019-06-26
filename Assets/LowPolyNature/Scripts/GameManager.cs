@@ -77,6 +77,12 @@ public class GameManager : MonoBehaviour {
 
     }
 
+    public void LevelComplete()
+    {
+
+        SceneManager.LoadScene("Level Complete");
+    }
+
     public void GameComplete()
     {
 

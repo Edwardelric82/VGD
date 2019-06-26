@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
     public hudmanager hud;
 
-    public float JumpSpeed = 7.0f;
+    public float JumpSpeed = 10.0f;
 
     public Text countText;
 
@@ -239,7 +239,7 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.tag == "levelup")
         {
 
-            GameManager.Instance.IncreaseLevel();
+            GameManager.Instance.LevelComplete();
 
 
         }
@@ -251,6 +251,20 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene("Game Over");
 
         }
+        else if (other.gameObject.tag == "PowerJump")
+        {
+            print("power up preso");
+
+            
+            
+            
+
+            
+
+            Destroy(other.gameObject);
+
+        }
+
 
     }
 
