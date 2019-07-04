@@ -9,6 +9,9 @@ TagManager:
   - Enemy
   - levelup
   - death
+  - key
+  - wine
+  - respawn
   layers:
   - Default
   - TransparentFX
