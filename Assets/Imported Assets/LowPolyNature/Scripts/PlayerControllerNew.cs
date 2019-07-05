@@ -80,7 +80,7 @@ public class PlayerControllerNew : MonoBehaviour
     void Update()
     {
 
-        PlayerControllerPlatform.
+        
 
         if (mIsControlEnabled)
         {

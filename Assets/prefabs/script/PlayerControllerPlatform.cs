@@ -61,6 +61,8 @@ public class PlayerControllerPlatform : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         grounded = character.isGrounded;
+
+        GameManager.Instance.RoutinePlayer();
     }
 
 
