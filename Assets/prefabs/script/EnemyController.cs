@@ -1,161 +1,60 @@
-﻿using UnityEngine;
-using UnityEngine.AI;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public Transform[] patrolPoints;
-    public int patrolPoint;
 
-    public NavMeshAgent agent;
-    public Animator animator;
+    public float rangeY = 2f;
 
-    public enum State
+    public float speed = 3f;
+
+    public float direction = 1f;
+
+    Vector3 initialPosition;
+
+    Transform player;
+
+    UnityEngine.AI.NavMeshAgent nav;
+
+    // Start is called before the first frame update
+    void Start()
     {
-        Idle,
-        Patrol,
-        Chase,
-        Attack
-    };
-    public State state;
 
-    public float waitAtPoint = 1f;
-    public float chaseRange = 5f;
-    public float attackRange = 1f;
-    public float attackDelay = 2f;
-    public float rotationSpeed = 3f;
+        //initialPosition = transform.position;
 
-    private float waitAtPointTimer;
-    private float attackDelayTimer;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
 
-    private void Update()
-    {
-        float distanceToPlayer = Vector3.Distance(PlayerControllerPlatform.instance.transform.position, agent.transform.position);
+        nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
 
-        switch (state)
-        {
-            case State.Idle:
-                Idle(distanceToPlayer);
-                break;
-
-            case State.Patrol:
-                Patrol(distanceToPlayer);
-                break;
-
-            case State.Chase:
-                Chase(distanceToPlayer);
-                break;
-
-            case State.Attack:
-                Attack(distanceToPlayer);
-                break;
-        }
     }
 
-    private void Idle(float distanceToPlayer)
+    // Update is called once per frame
+    void Update()
     {
-        if (distanceToPlayer <= chaseRange)
+        /*
+        float movementY = direction * speed * Time.deltaTime;
+
+        float newY = transform.position.y + movementY;
+
+        if (Mathf.Abs(newY - initialPosition.y) > rangeY)
         {
-            state = State.Chase;
+            direction *= -1;
         }
         else
         {
-            animator.SetBool("IsMoving", false);
-
-            if (waitAtPointTimer > 0)
-            {
-                waitAtPointTimer -= Time.deltaTime;
-            }
-            else
-            {
-                state = State.Patrol;
-                agent.SetDestination(patrolPoints[patrolPoint].position);
-            }
+            transform.Translate(new Vector3(0, movementY, 0));
         }
-    }
 
-    private void Patrol(float distanceToPlayer)
-    {
-        if (distanceToPlayer <= chaseRange)
-        {
-            state = State.Chase;
-        }
-        else
-        {
-            LookAtSlerp(patrolPoints[patrolPoint]);
+        */
+            // ... set the destination of the nav mesh agent to the player.
+            nav.SetDestination(player.position);
+        
+        
 
-            bool isMoving = true;
-            if (agent.remainingDistance <= 0.2f)
-            {
-                patrolPoint++;
 
-                if (patrolPoint == patrolPoints.Length)
-                    patrolPoint = 0;
 
-                state = State.Idle;
-                waitAtPointTimer += waitAtPoint;
 
-                isMoving = false;
-            }
-            animator.SetBool("IsMoving", isMoving);
-        }
-    }
 
-    private void Chase(float distanceToPlayer)
-    {
-        LookAtSlerp(PlayerControllerPlatform.instance.transform);
-
-        agent.SetDestination(PlayerControllerPlatform.instance.transform.position);
-
-        bool isMoving = true;
-        if (distanceToPlayer <= attackRange)
-        {
-            state = State.Attack;
-
-            isMoving = false;
-            animator.SetTrigger("Attack");
-            agent.velocity = Vector3.zero;
-            agent.isStopped = true;
-
-            attackDelayTimer = attackDelay;
-        }
-        else if (distanceToPlayer > chaseRange)
-        {
-            state = State.Patrol;
-            waitAtPointTimer = waitAtPoint;
-            agent.velocity = Vector3.zero;
-            agent.SetDestination(agent.transform.position);
-        }
-        animator.SetBool("IsMoving", isMoving);
-    }
-
-    private void Attack(float distanceToPlayer)
-    {
-        LookAtSlerp(PlayerControllerPlatform.instance.transform);
-
-        attackDelayTimer -= Time.deltaTime;
-
-        if (attackDelayTimer <= 0)
-        {
-            if (distanceToPlayer <= attackRange)
-            {
-                animator.SetTrigger("Attack");
-                attackDelayTimer = attackDelay;
-            }
-            else
-            {
-                state = State.Idle;
-                agent.isStopped = false;
-            }
-        }
-    }
-
-    private void LookAtSlerp(Transform target)
-    {
-        agent.transform.rotation = Quaternion.Slerp(
-            agent.transform.rotation, 
-            Quaternion.LookRotation(target.transform.position - agent.transform.position), 
-            Time.deltaTime * rotationSpeed
-        );
-        agent.transform.rotation = Quaternion.Euler(0f, agent.transform.rotation.eulerAngles.y, 0f);
     }
 }
