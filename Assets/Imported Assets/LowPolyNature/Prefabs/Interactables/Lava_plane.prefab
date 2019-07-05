@@ -9416,7 +9416,6 @@ GameObject:
   - component: {fileID: 4176018193185368}
   - component: {fileID: 33816697157352016}
   - component: {fileID: 23738494941660574}
-  - component: {fileID: 114831351698402424}
   - component: {fileID: 135435352480336172}
   - component: {fileID: 65222027921137056}
   m_Layer: 0
@@ -9487,21 +9486,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &114831351698402424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1475760165149330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbd38a9f77a354344a5a8ae183640bd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DamageRepeatRate: 0.1
-  DamageAmount: 1
-  Repeating: 1
 --- !u!135 &135435352480336172
 SphereCollider:
   m_ObjectHideFlags: 0

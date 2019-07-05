@@ -57,7 +57,9 @@ public class Pause : MonoBehaviour
     public void menuGame()
     {
         Time.timeScale = 1;
+        //GameManager.Instance.currentLevel=0;
         SceneManager.LoadScene("Home");
+
 
     }
 

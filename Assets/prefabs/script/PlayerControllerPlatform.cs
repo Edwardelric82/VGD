@@ -55,12 +55,14 @@ public class PlayerControllerPlatform : MonoBehaviour
         
 
         instance = this;
-        enabled = false;
+        
 
         // Dont destroy on reloading the scene
-        DontDestroyOnLoad(gameObject);
+        
 
         grounded = character.isGrounded;
+
+        //GameManager.Instance.RoutineStart();
     }
 
 

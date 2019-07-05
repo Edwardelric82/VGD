@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class LevelCompleteUi : MonoBehaviour
+public class GameCompleteUi : MonoBehaviour
 {
 
     public Text Score;
@@ -33,13 +33,17 @@ public class LevelCompleteUi : MonoBehaviour
     {
         GameManager.Instance.score = 0;
         GameManager.Instance.IncreaseLevel();
-        //GameManager.Instance.Respawn();
+        GameManager.Instance.Respawn();
     }
 
     public void menuGame()
     {
 
+        GameManager.Instance.score = 0;
+        GameManager.Instance.currentLevel = 1;
+
         SceneManager.LoadScene("Home");
+        
 
     }
     

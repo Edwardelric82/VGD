@@ -16,13 +16,13 @@ public class Respawn : MonoBehaviour
     {
         ciao = player.GetComponent<Animator>();
 
-        ciao.SetTrigger("death");
+       // ciao.SetTrigger("death");
 
-        GameManager.Instance.Respawn();
+        //GameManager.Instance.Respawn();
 
         player.transform.position = respawnPoint.transform.position;
 
-        ciao.SetTrigger("Idle");
+        //ciao.SetTrigger("Idle");
 
         
 

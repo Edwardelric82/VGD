@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour {
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
-        controller = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerPlatform>();
+        //controller = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerPlatform>();
 
         spawn = GameObject.FindGameObjectWithTag("respawn");
 
@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
 
-        spawn.transform.position = PlayerControllerPlatform.instance.transform.position;
+        //spawn.transform.position = player.transform.position;
 
         PlayerControllerPlatform.instance.enabled = true;
         CameraController.instance.brain.enabled = true;
@@ -173,6 +173,12 @@ public class GameManager : MonoBehaviour {
         SceneManager.LoadScene("GameComplete");
     }
 
+    public void RoutineStart()
+    {
+
+        StartCoroutine(StartRoutine());
+
+    }
     
     
 }
