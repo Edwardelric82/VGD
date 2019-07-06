@@ -4,28 +4,18 @@ using UnityEngine;
 
 public class Respawn : MonoBehaviour
 {
-    [SerializeField] private Transform player;
-
-    [SerializeField] private Transform respawnPoint;
-
-    private Animator ciao;
-
-
 
     void OnTriggerEnter(Collider other)
     {
-        ciao = player.GetComponent<Animator>();
+               
+       if (other.gameObject.tag=="Player")
+        {
 
-       // ciao.SetTrigger("death");
+            VitaPersonaggio.instance.DamagePlayer();
+            GameManager.Instance.Respawn();
 
-        //GameManager.Instance.Respawn();
-
-        player.transform.position = respawnPoint.transform.position;
-
-        //ciao.SetTrigger("Idle");
-
-        
-
+        }
+       
     }
 
 }

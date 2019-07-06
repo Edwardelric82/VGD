@@ -45,9 +45,18 @@ MonoBehaviour:
   character: {fileID: 2633687346832134484}
   model: {fileID: 6017521760433588545}
   modelParts:
+  - {fileID: 6017521760433588545}
   - {fileID: 27453975831869368}
   animator: {fileID: 24758951818064592}
   camera: {fileID: 0}
+  timer: 10
+  key: 0
+  hud: {fileID: 0}
+  countText: {fileID: 0}
+  birrasuono: {fileID: 0}
+  winesuono: {fileID: 0}
+  sfera: {fileID: 0}
+  RespawnPoint: {fileID: 0}
   moveSpeed: 5
   runSpeed: 10
   jumpHeight: 15
@@ -67,7 +76,7 @@ PrefabInstance:
     - target: {fileID: 5438183951061095053, guid: e0e2ae6e507d7814b8798ca8d8b27723,
         type: 3}
       propertyPath: m_Name
-      value: VIASS_Dman2
+      value: VIASS_Dman2 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6482404905484176489, guid: e0e2ae6e507d7814b8798ca8d8b27723,
         type: 3}

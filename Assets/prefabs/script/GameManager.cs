@@ -105,7 +105,10 @@ public class GameManager : MonoBehaviour {
 
         
         hudmanager.instance.ImageRespawnOn();
-       
+
+        player.transform.position = PlayerControllerPlatform.instance.RespawnPoint.transform.position;
+   
+
         yield return new WaitForSeconds(2f);
 
         hudmanager.instance.ImageRespawnOff();
@@ -180,5 +183,8 @@ public class GameManager : MonoBehaviour {
 
     }
     
-    
+    public void GameOver()
+    {
+        SceneManager.LoadScene("Game Over");
+    }
 }

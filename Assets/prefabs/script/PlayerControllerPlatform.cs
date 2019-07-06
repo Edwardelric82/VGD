@@ -15,7 +15,7 @@ public class PlayerControllerPlatform : MonoBehaviour
     public Animator animator;
     public new Camera camera;
 
-    private Animator _animator;
+    
 
     public float timer = 10.0f;
 
@@ -139,6 +139,8 @@ public class PlayerControllerPlatform : MonoBehaviour
         motion.y = height;
     }
 
+
+
     private void OnTriggerEnter(Collider other)
     {
 
@@ -206,9 +208,10 @@ public class PlayerControllerPlatform : MonoBehaviour
         else if (other.gameObject.tag == "death")
         {
 
-            print("game over");
 
-            _animator.SetTrigger("death");
+            GameManager.Instance.Respawn();
+
+            animator.SetTrigger("Death");
 
             
 
@@ -223,20 +226,15 @@ public class PlayerControllerPlatform : MonoBehaviour
         else if (other.gameObject.tag == "Enemy")
         {
 
-            print("game over");
+            VitaPersonaggio.instance.DamagePlayer();
 
-            _animator.SetTrigger("death");
+            Knockback();
+
+            CalculateMotionKnockback();
 
             
-
-            timer -= Time.deltaTime;
-
-            if (timer == 0)
-            {
-                SceneManager.LoadScene("Game Over");
-            }
-
-
+            
+                                 
 
         }
         else if (other.gameObject.tag == "PowerJump")
