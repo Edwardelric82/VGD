@@ -42,7 +42,7 @@ public class VitaPersonaggio: MonoBehaviour
 
         if (health == 0)
         {
-            ResetHealth();
+            
             GameManager.Instance.GameOver();
         }
         else

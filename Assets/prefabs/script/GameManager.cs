@@ -166,14 +166,22 @@ public class GameManager : MonoBehaviour {
 
     public void LevelComplete()
     {
-
+        Cursor.visible = true;
         SceneManager.LoadScene("Level Complete");
     }
 
     public void GameComplete()
     {
+        Cursor.visible = true;
 
         SceneManager.LoadScene("GameComplete");
+    }
+
+    public void GameOver()
+    {
+        Cursor.visible = true;
+
+        SceneManager.LoadScene("Game Over");
     }
 
     public void RoutineStart()
@@ -183,8 +191,5 @@ public class GameManager : MonoBehaviour {
 
     }
     
-    public void GameOver()
-    {
-        SceneManager.LoadScene("Game Over");
-    }
+    
 }
