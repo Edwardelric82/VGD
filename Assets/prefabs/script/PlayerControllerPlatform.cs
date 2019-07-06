@@ -48,6 +48,11 @@ public class PlayerControllerPlatform : MonoBehaviour
     private bool grounded;
     private Vector3 motion;
 
+    //--------------------------------------------
+    public static float powerTimeOut = 5f;
+    private bool powerUpActive = false;
+    //--------------------------------------------
+
     private void Awake()
     {
         
@@ -236,19 +241,58 @@ public class PlayerControllerPlatform : MonoBehaviour
             
                                  
 
-        }
-        else if (other.gameObject.tag == "PowerJump")
+        }//-----------------------------PowerUp---------------------------------
+        else if (other.gameObject.tag == "PowerJump" && powerUpActive == false )
         {
-            print("power up preso");
-
-
-
+            powerUpActive = true;
             Destroy(other.gameObject);
+            StartCoroutine(CountDownJump());                  
+
+        }
+        else if (other.gameObject.tag == "PowerSpeed" && powerUpActive == false)
+        {
+            powerUpActive = true;
+            Destroy(other.gameObject);
+            StartCoroutine(CountDownSpeed());
+
+        }
+        else if (other.gameObject.tag == "PowerDown" && powerUpActive == false)
+        {
+            powerUpActive = true;
+            Destroy(other.gameObject);
+            StartCoroutine(CountDownDown());
 
         }
 
 
 
+    }
+
+    IEnumerator CountDownJump()
+    {
+        jumpHeight += 10f;
+        yield return new WaitForSeconds(powerTimeOut);
+        jumpHeight -= 10f;
+        powerUpActive = false;
+    }
+    IEnumerator CountDownSpeed() {
+
+        runSpeed += 10f;
+        yield return new WaitForSeconds(powerTimeOut);
+        runSpeed -= 10f;
+        powerUpActive = false;
+    }
+    IEnumerator CountDownDown()
+    {
+
+        jumpHeight -= 10f;
+        runSpeed -= 10f;
+        moveSpeed -= 5f;
+        yield return new WaitForSeconds(powerTimeOut);
+        jumpHeight += 10f;
+        runSpeed += 10f;
+        moveSpeed += 5f;
+        powerUpActive = false;
     }
 
 }

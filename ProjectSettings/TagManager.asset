@@ -12,6 +12,9 @@ TagManager:
   - key
   - wine
   - respawn
+  - PowerJump
+  - PowerSpeed
+  - PowerDown
   layers:
   - Default
   - TransparentFX
