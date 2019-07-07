@@ -86,7 +86,7 @@ public class EnemyControllerPlatformv2: MonoBehaviour
         }
         else
         {
-
+            Fire();
 
             bool isMoving = true;
             if (agent.remainingDistance <= 0.2f)

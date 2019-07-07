@@ -1,0 +1,10 @@
+Musica
+Player & Camera
+Respawn Point (Iniziale Minimo)
+game manager
+hud manager
+pause panel
+pause menu
+canvas (score & life)
+fps(only for test)
+event system
