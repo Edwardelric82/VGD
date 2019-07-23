@@ -18,6 +18,7 @@ TagManager:
   - elimina
   - prova
   - prefabplayer
+  - goldkey
   layers:
   - Default
   - TransparentFX

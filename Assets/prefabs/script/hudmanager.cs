@@ -49,7 +49,7 @@ public class hudmanager : MonoBehaviour
 
     public void life(int vite)
     {
-        
+        /*
         for(int i = 1;i<=3;i++)
         {
             if(i<=vite)
@@ -60,8 +60,8 @@ public class hudmanager : MonoBehaviour
             }
 
         }
+        */
         
-        /*
         switch (vite)
         {
             case 1:
@@ -96,6 +96,6 @@ public class hudmanager : MonoBehaviour
                 break;
 
         }
-        */
+        
     }
 }

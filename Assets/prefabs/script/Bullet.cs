@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
     private void Update()
     {
         float disToMove = speed * Time.deltaTime;
-        transform.Translate(Vector3.forward * disToMove);
+        transform.Translate(Vector3.forward * disToMove);//instead of vector player.pos
 
         timer += 1.0f * Time.deltaTime;
         if(timer >20)
@@ -40,7 +40,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "player")
+        if (other.tag == "Player")
         {
             player.GetComponent<VitaPersonaggio>().DamagePlayer();
             Destroy(gameObject);

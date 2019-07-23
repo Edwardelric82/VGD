@@ -213,6 +213,15 @@ public class PlayerControllerPlatform : MonoBehaviour
             Destroy(other.gameObject);
 
         }
+        else if (other.gameObject.tag == "goldkey")
+        {
+            print("Gold Key Collected");
+
+            PlatformDamage.instance.keyc();
+
+            Destroy(other.gameObject);
+
+        }
         else if (other.gameObject.tag == "death")
         {
 

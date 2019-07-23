@@ -29,6 +29,11 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        float distance = Vector3.Distance(player.transform.position, transform.position);
+        transform.LookAt(player.transform);
+
+        //if distance
         
     }
 }
