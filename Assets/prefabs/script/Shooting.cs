@@ -5,7 +5,7 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
 
-    float bulletSpeed = 1100;
+    public float bulletSpeed = 1100;
     public GameObject bullet;
 
     //AudioSource bulletAudio;

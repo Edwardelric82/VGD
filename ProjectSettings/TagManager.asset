@@ -15,6 +15,9 @@ TagManager:
   - PowerJump
   - PowerSpeed
   - PowerDown
+  - elimina
+  - prova
+  - prefabplayer
   layers:
   - Default
   - TransparentFX

@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class HoldCharacter : MonoBehaviour
 {
-
     private void OnTriggerEnter(Collider other)
     {
-        other.transform.parent = gameObject.transform;
+        
+        
+       other.transform.parent = gameObject.transform;
+
+        
+        
     }
 
     private void OnTriggerExit(Collider other)
     {
-        other.transform.parent = null;
+        
+
+        other.transform.parent = GameObject.FindGameObjectWithTag("prefabplayer").transform;
     }
 }

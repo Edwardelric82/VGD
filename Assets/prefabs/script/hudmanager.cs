@@ -9,7 +9,7 @@ public class hudmanager : MonoBehaviour
 
     public Image blackScreen;
 
-    public RawImage[]  hearts;
+    public RawImage []  hearts;
 
     public Text scoreLabel;
 
@@ -49,9 +49,10 @@ public class hudmanager : MonoBehaviour
 
     public void life(int vite)
     {
-        for(int i = 0;i<=3;i++)
+        
+        for(int i = 1;i<=3;i++)
         {
-            if(i<vite+1)
+            if(i<=vite)
             hearts[i].gameObject.SetActive(true);
             else
             {
@@ -60,5 +61,41 @@ public class hudmanager : MonoBehaviour
 
         }
         
+        /*
+        switch (vite)
+        {
+            case 1:
+                {
+                    hearts[1].gameObject.SetActive(true);
+                    hearts[2].gameObject.SetActive(false);
+                    hearts[3].gameObject.SetActive(false);
+
+
+                }
+                break;
+
+
+            case 2:
+                {
+                    hearts[1].gameObject.SetActive(true);
+                    hearts[2].gameObject.SetActive(true);
+                    hearts[3].gameObject.SetActive(false);
+
+
+                }
+                break;
+
+
+            case 3:
+                {
+                    hearts[1].gameObject.SetActive(true);
+                    hearts[2].gameObject.SetActive(true);
+                    hearts[3].gameObject.SetActive(true);
+
+                }
+                break;
+
+        }
+        */
     }
 }

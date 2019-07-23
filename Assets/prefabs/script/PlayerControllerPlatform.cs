@@ -12,6 +12,7 @@ public class PlayerControllerPlatform : MonoBehaviour
     public CharacterController character;
     public GameObject model;
     public GameObject[] modelParts;
+
     public Animator animator;
     public new Camera camera;
 
@@ -44,6 +45,8 @@ public class PlayerControllerPlatform : MonoBehaviour
     public float knockbackPower = 3f;
     public float knockbackDuration = 0.5f;
     private float knockbackTimer;
+
+    private GameObject env;
 
     private bool grounded;
     private Vector3 motion;
@@ -261,6 +264,13 @@ public class PlayerControllerPlatform : MonoBehaviour
             powerUpActive = true;
             Destroy(other.gameObject);
             StartCoroutine(CountDownDown());
+
+        }
+        else if (other.gameObject.tag == "elimina")
+        {
+            env = GameObject.FindGameObjectWithTag("prova");
+            env.SetActive(false);
+
 
         }
 

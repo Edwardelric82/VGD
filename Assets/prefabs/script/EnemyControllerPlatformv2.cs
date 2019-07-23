@@ -9,7 +9,7 @@ public class EnemyControllerPlatformv2: MonoBehaviour
     public NavMeshAgent agent;
     public Animator animator;
 
-    float bulletSpeed = 1100;
+    public float bulletSpeed = 1100;
     public GameObject bullet;
 
     //AudioSource bulletAudio;
@@ -86,7 +86,7 @@ public class EnemyControllerPlatformv2: MonoBehaviour
         }
         else
         {
-            Fire();
+            
 
             bool isMoving = true;
             if (agent.remainingDistance <= 0.2f)
@@ -144,14 +144,15 @@ public class EnemyControllerPlatformv2: MonoBehaviour
             if (distanceToPlayer <= attackRange)
             {
                 animator.SetTrigger("Attack");
+
                 attackDelayTimer = attackDelay;
 
                 Fire();
-    
-    
 
-    
-}
+                
+
+
+            }
             else
             {
                 state = State.Idle;
@@ -166,7 +167,7 @@ public class EnemyControllerPlatformv2: MonoBehaviour
         GameObject tempBullet = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
         Rigidbody tempRigidBodyBullet = tempBullet.GetComponent<Rigidbody>();
         tempRigidBodyBullet.AddForce(tempRigidBodyBullet.transform.forward * bulletSpeed);
-        Destroy(tempBullet, 0.5f);
+            
 
         //Play Audio
         //bulletAudio.Play();
