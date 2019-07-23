@@ -150,9 +150,6 @@ public class EnemyControllerPlatformv2: MonoBehaviour
 
                 Fire();
 
-                
-
-
             }
             else
             {
@@ -175,18 +172,7 @@ public class EnemyControllerPlatformv2: MonoBehaviour
 
     }
 
-    void WallFire()
-    {
-        //Shoot
-        GameObject tempBullet = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
-        Rigidbody tempRigidBodyBullet = tempBullet.GetComponent<Rigidbody>();
-        tempRigidBodyBullet.AddForce(tempRigidBodyBullet.transform.forward * bulletSpeed);
-
-
-        //Play Audio
-        //bulletAudio.Play();
-
-    }
+    
 
     private void LookAtSlerp(Transform target)
     {

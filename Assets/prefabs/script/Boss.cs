@@ -1,39 +1,219 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Boss : MonoBehaviour
 {
-    public int vita;
-    Animator anim;
-
-    public Transform player;
-
-
+    public Transform[] patrolPoints;
+    public int patrolPoint;
     
+    public NavMeshAgent agent;
+    public Animator animator;
 
+    public float bulletSpeed = 1100;
+    public GameObject bullet;
+    public GameObject sword;
+    public bool death;
 
+    //AudioSource bulletAudio;
 
-
-        //step sinistra 
-        //step destra 
-
-    // Start is called before the first frame update
-    void Start()
+    public enum State
     {
-        anim = gameObject.GetComponent<Animator>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        
+        Idle,
+        Patrol,
+        Chase,
+        Attack
+    };
+    public State state;
+
+    public float waitAtPoint = 1f;
+    public float chaseRange = 5f;
+    public float attackRange = 1f;
+    public float attackDelay = 2f;
+    public float rotationSpeed = 3f;
+
+    private float waitAtPointTimer;
+    private float attackDelayTimer;
+
+    private void Update()
+    {
+        float distanceToPlayer = Vector3.Distance(PlayerControllerPlatform.instance.transform.position, agent.transform.position);
+
+        switch (state)
+        {
+            case State.Idle:
+                Idle(distanceToPlayer);
+                break;
+
+            case State.Patrol:
+                Patrol(distanceToPlayer);
+                break;
+
+            case State.Chase:
+                Chase(distanceToPlayer);
+                break;
+
+            case State.Attack:
+                Attack(distanceToPlayer);
+                break;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Idle(float distanceToPlayer)
     {
+        if (distanceToPlayer <= chaseRange)
+        {
+            state = State.Chase;
+        }
+        else
+        {
+            animator.SetBool("IsMoving", false);
 
-        float distance = Vector3.Distance(player.transform.position, transform.position);
-        transform.LookAt(player.transform);
+            if (waitAtPointTimer > 0)
+            {
+                waitAtPointTimer -= Time.deltaTime;
+            }
+            else
+            {
+                state = State.Patrol;
+                agent.SetDestination(patrolPoints[patrolPoint].position);
+            }
+        }
+    }
 
-        //if distance
-        
+    private void Patrol(float distanceToPlayer)
+    {
+        if (distanceToPlayer <= chaseRange)
+        {
+            state = State.Chase;
+        }
+        else
+        {
+
+
+            bool isMoving = true;
+            if (agent.remainingDistance <= 0.2f)
+            {
+                patrolPoint++;
+
+                if (patrolPoint == patrolPoints.Length)
+                    patrolPoint = 0;
+
+                state = State.Idle;
+                waitAtPointTimer += waitAtPoint;
+
+                isMoving = false;
+            }
+            animator.SetBool("IsMoving", isMoving);
+        }
+    }
+
+    private void Chase(float distanceToPlayer)
+    {
+        LookAtSlerp(PlayerControllerPlatform.instance.transform);
+
+        agent.SetDestination(PlayerControllerPlatform.instance.transform.position);
+
+        bool isMoving = true;
+        if (distanceToPlayer <= attackRange)
+        {
+            state = State.Attack;
+
+            isMoving = false;
+            animator.SetTrigger("Attack");
+            agent.velocity = Vector3.zero;
+            agent.isStopped = true;
+
+            attackDelayTimer = attackDelay;
+        }
+        else if (distanceToPlayer > chaseRange)
+        {
+            state = State.Patrol;
+            waitAtPointTimer = waitAtPoint;
+            agent.velocity = Vector3.zero;
+            agent.SetDestination(agent.transform.position);
+        }
+        animator.SetBool("IsMoving", isMoving);
+    }
+
+    private void Attack(float distanceToPlayer)
+    {
+        LookAtSlerp(PlayerControllerPlatform.instance.transform);
+
+        attackDelayTimer -= Time.deltaTime;
+
+        /*
+
+        if (attackDelayTimer <= 0)
+        {
+            if (distanceToPlayer <= attackRange)
+            {
+                animator.SetTrigger("Attack");
+
+                attackDelayTimer = attackDelay;
+
+                Fire();
+
+                
+
+
+            }
+            else
+            {
+                state = State.Idle;
+                agent.isStopped = false;
+            }
+        }*/
+
+        Death();
+
+    }
+
+    void Fire()
+    {
+        //Shoot
+        GameObject tempBullet = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
+        Rigidbody tempRigidBodyBullet = tempBullet.GetComponent<Rigidbody>();
+        tempRigidBodyBullet.AddForce(tempRigidBodyBullet.transform.forward * bulletSpeed);
+
+
+        //Play Audio
+        //bulletAudio.Play();
+
+    }
+
+    void WallFire()
+    {
+        //Shoot
+        GameObject tempBullet = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
+        Rigidbody tempRigidBodyBullet = tempBullet.GetComponent<Rigidbody>();
+        tempRigidBodyBullet.AddForce(tempRigidBodyBullet.transform.forward * bulletSpeed);
+
+
+        //Play Audio
+        //bulletAudio.Play();
+
+    }
+
+    public void Death()
+    {
+        sword.SetActive(true);
+
+        //float disToMove = speed * Time.deltaTime;
+        //transform.Translate(Vector3.down * disToMove);//instead of vector player.pos
+        animator.SetBool("Death", death);
+
+
+    }
+
+    private void LookAtSlerp(Transform target)
+    {
+        agent.transform.rotation = Quaternion.Slerp(
+            agent.transform.rotation,
+            Quaternion.LookRotation(target.transform.position - agent.transform.position),
+            Time.deltaTime * rotationSpeed
+        );
+        agent.transform.rotation = Quaternion.Euler(0f, agent.transform.rotation.eulerAngles.y, 0f);
     }
 }
