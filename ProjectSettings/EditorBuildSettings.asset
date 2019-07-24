@@ -9,11 +9,11 @@ EditorBuildSettings:
     path: Assets/Imported Assets/LowPolyNature/Scenes/Demo.unity
     guid: 098a34d9c68692342943067d2876f441
   - enabled: 0
-    path: Assets/Imported Assets/LowPolyNature/Scenes/Simple.unity
-    guid: 55a0b71e85d58e34ea55f5f65a929097
-  - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: Assets/Imported Assets/LowPolyNature/Scenes/Simple.unity
+    guid: 55a0b71e85d58e34ea55f5f65a929097
   - enabled: 1
     path: Assets/Scenes/Home.unity
     guid: 9009bae100b2428448aa84c0675471e7
@@ -25,10 +25,7 @@ EditorBuildSettings:
     guid: 470defc2602e1fc43b9f4153f10bce61
   - enabled: 1
     path: Assets/Scenes/Level3.unity
-    guid: c65aa2995ab09984eafdd201b58f4ab7
-  - enabled: 0
-    path: Assets/Scenes/Tutorial.unity
-    guid: b9deacdac9f66564a9e510ad379fe97c
+    guid: 02d1da14eac499543bd5e51b1eb5881d
   - enabled: 1
     path: Assets/Scenes/Game Over.unity
     guid: 44dcbe44b9ab1a14d9fccd78141f1e1a
@@ -38,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameComplete.unity
     guid: 4336056efe3fc1b44846b0ca31582cba
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

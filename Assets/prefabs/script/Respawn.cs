@@ -12,6 +12,7 @@ public class Respawn : MonoBehaviour
         {
 
             VitaPersonaggio.instance.DamagePlayer();
+            
             GameManager.Instance.Respawn();
 
         }
