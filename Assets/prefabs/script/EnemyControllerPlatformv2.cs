@@ -11,6 +11,7 @@ public class EnemyControllerPlatformv2: MonoBehaviour
 
     public float bulletSpeed = 1100;
     public GameObject bullet;
+    public Transform bulletParent;
     public GameObject sword;
 
     //AudioSource bulletAudio;
@@ -163,6 +164,7 @@ public class EnemyControllerPlatformv2: MonoBehaviour
     {
         //Shoot
         GameObject tempBullet = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
+        tempBullet.transform.parent = bulletParent;
         Rigidbody tempRigidBodyBullet = tempBullet.GetComponent<Rigidbody>();
         tempRigidBodyBullet.AddForce(tempRigidBodyBullet.transform.forward * bulletSpeed);
             
