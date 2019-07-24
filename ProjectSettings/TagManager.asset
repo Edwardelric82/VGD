@@ -22,6 +22,7 @@ TagManager:
   - boss
   - RespawnBoss
   - platboss
+  - platbosstop
   layers:
   - Default
   - TransparentFX

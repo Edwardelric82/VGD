@@ -10,11 +10,9 @@ public class platboss : MonoBehaviour
 
     public Transform position2;
     public Vector3 newPosition;
-
-    public GameObject gabbia;
+    
     public GameObject boss;
-
-    private float timgabbia=2.0f;
+    
     private bool mov = false;
 
     public float smooth;
@@ -36,12 +34,7 @@ public class platboss : MonoBehaviour
 
             movingPlatform.position = Vector3.Lerp(movingPlatform.position, newPosition, smooth * Time.deltaTime);
 
-            if (movingPlatform.position == newPosition)
-            {
-                mov = false;
-                
-                gabbia.SetActive(false);
-            }
+            
         }
         
 
@@ -55,13 +48,17 @@ public class platboss : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            newPosition = position2.position;
-            mov = true;
-            gabbia.SetActive(true);
             other.transform.parent = gameObject.transform;
 
         }
         
+    }
+
+    public void movement()
+    {
+        newPosition = position2.position;
+        
+        mov = true;
     }
 
     private void OnTriggerExit(Collider other)
