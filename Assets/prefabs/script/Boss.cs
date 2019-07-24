@@ -13,6 +13,8 @@ public class Boss : MonoBehaviour
     public float bulletSpeed = 1100;
     public GameObject bullet;
     public GameObject sword;
+    public GameObject Startboss;
+    public GameObject sphere;
 
     private bool death = false;
 
@@ -68,8 +70,14 @@ public class Boss : MonoBehaviour
                 
             if (Deathanim <= 0) animator.SetBool("Death", death);
 
-            if (Deathanim <= -20) GameManager.Instance.GameComplete();
+            if (Deathanim <= -20)
+            {
+                
+                Startboss.SetActive(false);
 
+                sphere.SetActive(true);
+
+            }
             state = State.Death;
         }
         else

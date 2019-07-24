@@ -21,6 +21,7 @@ TagManager:
   - goldkey
   - boss
   - RespawnBoss
+  - platboss
   layers:
   - Default
   - TransparentFX

@@ -33,6 +33,8 @@ public class PlayerControllerPlatform : MonoBehaviour
     public AudioSource winesuono;
 
     public GameObject sfera;
+    
+    
 
     public GameObject RespawnPoint;
 
@@ -61,7 +63,7 @@ public class PlayerControllerPlatform : MonoBehaviour
     //--------------------------------------------
     public static float powerTimeOut = 5f;
 
-    public static float bossfight = 10f;
+    public static float bossfight = 1f;
     private bool powerUpActive = false;
     //--------------------------------------------
 
@@ -147,7 +149,6 @@ public class PlayerControllerPlatform : MonoBehaviour
         knockbackTimer -= Time.deltaTime;
         isKnockedBack = knockbackTimer > 0;
 
-        motion = character.transform.forward *-knockbackPower;
     }
 
     public void Knockback()
@@ -159,7 +160,7 @@ public class PlayerControllerPlatform : MonoBehaviour
     public void KnockbackDef()
     {
         isKnockedBackDef = true;
-        knockbackTimer = knockbackDuration * 2;
+        knockbackTimer = knockbackDuration *2;
     }
 
     public void Bounce()
@@ -234,11 +235,6 @@ public class PlayerControllerPlatform : MonoBehaviour
             key = true;
 
             sfera.SetActive(true);
-
-            if(GameManager.Instance.currentLevel==3)
-            {
-                StartCoroutine(BossFight());
-            }
 
             Destroy(other.gameObject);
 
@@ -343,15 +339,7 @@ public class PlayerControllerPlatform : MonoBehaviour
         moveSpeed += 5f;
         powerUpActive = false;
     }
-    IEnumerator BossFight()
-    {
-
-        
-        yield return new WaitForSeconds(bossfight);
-
-        GameManager.Instance.spawn.transform.position = GameObject.FindGameObjectWithTag("RespawnBoss").transform.position;
-
-    }
+    
 
 
 }
