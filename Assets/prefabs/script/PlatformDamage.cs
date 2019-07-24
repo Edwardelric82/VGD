@@ -14,13 +14,12 @@ public class PlatformDamage : MonoBehaviour {
 
     public float smooth;
 
-    public GameObject spada;
-
     
 
     private void Awake()
     {
         instance = this;
+        print("awake plat");
     }
 
 
@@ -28,11 +27,11 @@ public class PlatformDamage : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate ()
     { 
-        if(mov == true)
+        if(mov == true && movingPlatform.position != newPosition)
         {
 
             movingPlatform.position = Vector3.Lerp(movingPlatform.position, newPosition, smooth * Time.deltaTime);
-
+           
         }
         
     }
@@ -43,8 +42,8 @@ public class PlatformDamage : MonoBehaviour {
         {
             newPosition = position2.position;
             mov = true;
-            print("Muoviti Cazzo");
-
+            Boss.instance.muori();
+            print("poba");
         }
 
 
@@ -53,7 +52,7 @@ public class PlatformDamage : MonoBehaviour {
     public void keyc()
     {
         key = true;
-
+        print("kec");
     }
     
     

@@ -20,6 +20,8 @@ public class PlayerControllerPlatform : MonoBehaviour
 
     public float timer = 10.0f;
 
+    public float stepback = 10.0f;
+
     public bool key = false;
 
     public hudmanager hud;
@@ -42,7 +44,12 @@ public class PlayerControllerPlatform : MonoBehaviour
     public float bounceHeight = 5f;
 
     public bool isKnockedBack = false;
+    public bool isKnockedBackDef = false;
+
+
     public float knockbackPower = 3f;
+    public float knockbackPowerDef = 10f;
+
     public float knockbackDuration = 0.5f;
     private float knockbackTimer;
 
@@ -53,6 +60,8 @@ public class PlayerControllerPlatform : MonoBehaviour
 
     //--------------------------------------------
     public static float powerTimeOut = 5f;
+
+    public static float bossfight = 10f;
     private bool powerUpActive = false;
     //--------------------------------------------
 
@@ -81,6 +90,8 @@ public class PlayerControllerPlatform : MonoBehaviour
 
         if (isKnockedBack)
             CalculateMotionKnockback();
+        else if (isKnockedBackDef)
+            CalculateMotionKnockbackDef();
         else
             CalculateMotion();
 
@@ -131,10 +142,24 @@ public class PlayerControllerPlatform : MonoBehaviour
         motion = character.transform.forward * -knockbackPower;
     }
 
+    private void CalculateMotionKnockbackDef()
+    {
+        knockbackTimer -= Time.deltaTime;
+        isKnockedBack = knockbackTimer > 0;
+
+        motion = character.transform.forward *-knockbackPower;
+    }
+
     public void Knockback()
     {
         isKnockedBack = true;
         knockbackTimer = knockbackDuration;
+    }
+
+    public void KnockbackDef()
+    {
+        isKnockedBackDef = true;
+        knockbackTimer = knockbackDuration * 2;
     }
 
     public void Bounce()
@@ -209,6 +234,11 @@ public class PlayerControllerPlatform : MonoBehaviour
             key = true;
 
             sfera.SetActive(true);
+
+            if(GameManager.Instance.currentLevel==3)
+            {
+                StartCoroutine(BossFight());
+            }
 
             Destroy(other.gameObject);
 
@@ -313,5 +343,15 @@ public class PlayerControllerPlatform : MonoBehaviour
         moveSpeed += 5f;
         powerUpActive = false;
     }
+    IEnumerator BossFight()
+    {
+
+        
+        yield return new WaitForSeconds(bossfight);
+
+        GameManager.Instance.spawn.transform.position = GameObject.FindGameObjectWithTag("RespawnBoss").transform.position;
+
+    }
+
 
 }

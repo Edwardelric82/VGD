@@ -19,6 +19,8 @@ TagManager:
   - prova
   - prefabplayer
   - goldkey
+  - boss
+  - RespawnBoss
   layers:
   - Default
   - TransparentFX
