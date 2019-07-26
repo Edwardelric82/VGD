@@ -8,6 +8,7 @@ public class EnemyControllerPlatformv2: MonoBehaviour
 
     public NavMeshAgent agent;
     public Animator animator;
+    public AudioSource Bat_sound;
 
     public float bulletSpeed = 1100;
     public GameObject bullet;
@@ -122,7 +123,7 @@ public class EnemyControllerPlatformv2: MonoBehaviour
             animator.SetTrigger("Attack");
             agent.velocity = Vector3.zero;
             agent.isStopped = true;
-
+            Bat_sound.Play();
             attackDelayTimer = attackDelay;
         }
         else if (distanceToPlayer > chaseRange)
