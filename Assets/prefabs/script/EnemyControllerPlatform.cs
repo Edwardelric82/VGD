@@ -9,6 +9,8 @@ public class EnemyControllerPlatform: MonoBehaviour
     public NavMeshAgent agent;
     public Animator animator;
 
+    public AudioSource Chaser_sound;
+
     public enum State
     {
         Idle,
@@ -115,7 +117,7 @@ public class EnemyControllerPlatform: MonoBehaviour
             animator.SetTrigger("Attack");
             agent.velocity = Vector3.zero;
             agent.isStopped = true;
-
+            Chaser_sound.Play();
             attackDelayTimer = attackDelay;
         }
         else if (distanceToPlayer > chaseRange)
@@ -140,6 +142,7 @@ public class EnemyControllerPlatform: MonoBehaviour
             {
                 animator.SetTrigger("Attack");
                 attackDelayTimer = attackDelay;
+                
             }
             else
             {
