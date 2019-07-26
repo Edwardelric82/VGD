@@ -1,9 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class PlatformDamage : MonoBehaviour {
+public class PlatformDamage2 : MonoBehaviour {
 
-    public static PlatformDamage instance; 
+    public static PlatformDamage2 instance; 
     public Transform movingPlatform;
     
     public Transform position2;
@@ -12,7 +12,7 @@ public class PlatformDamage : MonoBehaviour {
     public GameObject goldkey;
 
     private bool mov = false;
-    public bool key = false;
+    private bool key = false;
 
     public float smooth;
 
@@ -48,13 +48,16 @@ public class PlatformDamage : MonoBehaviour {
             key = false;
 
             goldkey.SetActive(true);
-            
-            
+
         }
 
 
     }
-    
+
+    private void OnTriggerExit(Collider other)
+    {
+
+    }
 
 
     public void keyc()

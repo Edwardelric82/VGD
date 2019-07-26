@@ -34,7 +34,6 @@ public class PlayerControllerPlatform : MonoBehaviour
 
     public GameObject sfera;
     
-    
 
     public GameObject RespawnPoint;
 
@@ -247,14 +246,16 @@ public class PlayerControllerPlatform : MonoBehaviour
         {
             print("Gold Key Collected");
 
-            PlatformDamage.instance.keyc();
+            
 
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
+            //Destroy(other.gameObject);
 
         }
         else if (other.gameObject.tag == "death")
         {
 
+            VitaPersonaggio.instance.DamagePlayer();
 
             GameManager.Instance.Respawn();
 

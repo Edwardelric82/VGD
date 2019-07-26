@@ -14,6 +14,7 @@ public class GameOverUiManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = true;
 
         Score.text = "Score : "+ GameManager.Instance.score.ToString() +""; 
 
@@ -30,11 +31,10 @@ public class GameOverUiManager : MonoBehaviour
 
     public void menuGame()
     {
+
         SceneManager.LoadScene("Home");
+
     }
 
-    public void NextLevel()
-    {
-        SceneManager.LoadScene("Home");
-    }
+    
 }

@@ -22,7 +22,6 @@ TagManager:
   - boss
   - RespawnBoss
   - platboss
-  - platbosstop
   - vita
   layers:
   - Default
