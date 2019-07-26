@@ -8,7 +8,7 @@ public class Respawn : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
                
-       if (other.gameObject.tag=="Player")
+       if (other.tag=="Player")
         {
 
             VitaPersonaggio.instance.DamagePlayer();

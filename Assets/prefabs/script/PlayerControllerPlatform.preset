@@ -50,6 +50,10 @@ Preset:
     value: 10
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: stepback
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: key
     value: 0
     objectReference: {fileID: 0}
@@ -106,8 +110,16 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: isKnockedBackDef
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: knockbackPower
     value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: knockbackPowerDef
+    value: 10
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: knockbackDuration

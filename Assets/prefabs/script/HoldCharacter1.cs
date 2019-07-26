@@ -28,7 +28,7 @@ public class HoldCharacter1: MonoBehaviour
         
 
 
-        if (other.tag == "player") other.transform.parent = GameObject.FindGameObjectWithTag("prefabplayer").transform;
+        //if (other.tag == "player") other.transform.parent = GameObject.FindGameObjectWithTag("prefabplayer").transform;
 
 
     }
