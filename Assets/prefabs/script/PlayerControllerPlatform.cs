@@ -187,6 +187,8 @@ public class PlayerControllerPlatform : MonoBehaviour
 
             birrasuono.Play();
 
+            VitaPersonaggio.instance.HealPlayer();
+
             Destroy(other.gameObject);
 
         }
@@ -201,6 +203,8 @@ public class PlayerControllerPlatform : MonoBehaviour
 
             winesuono.Play();
 
+            VitaPersonaggio.instance.HealPlayer();
+
             Destroy(other.gameObject);
 
 
@@ -209,8 +213,8 @@ public class PlayerControllerPlatform : MonoBehaviour
         {
 
             if (key == true)
-            {   
-                if(GameManager.Instance.currentLevel ==3)
+            {
+                if (GameManager.Instance.currentLevel == 3)
                 {
                     GameManager.Instance.GameComplete();
 
@@ -220,7 +224,7 @@ public class PlayerControllerPlatform : MonoBehaviour
                     GameManager.Instance.LevelComplete();
 
                 }
-                
+
 
 
             }
@@ -257,7 +261,7 @@ public class PlayerControllerPlatform : MonoBehaviour
 
             animator.SetTrigger("Death");
 
-            
+
 
             timer -= Time.deltaTime;
 
@@ -276,16 +280,17 @@ public class PlayerControllerPlatform : MonoBehaviour
 
             CalculateMotionKnockback();
 
-            
-            
-                                 
+            VitaPersonaggio.instance.HudLife();
+
+
+
 
         }//-----------------------------PowerUp---------------------------------
-        else if (other.gameObject.tag == "PowerJump" && powerUpActive == false )
+        else if (other.gameObject.tag == "PowerJump" && powerUpActive == false)
         {
             powerUpActive = true;
             Destroy(other.gameObject);
-            StartCoroutine(CountDownJump());                  
+            StartCoroutine(CountDownJump());
 
         }
         else if (other.gameObject.tag == "PowerSpeed" && powerUpActive == false)
@@ -309,7 +314,11 @@ public class PlayerControllerPlatform : MonoBehaviour
 
 
         }
-
+        /*else if (other.gameObject.tag == "vita" && VitaPersonaggio.instance.health < 3)
+        {
+            Destroy(other.gameObject);
+            VitaPersonaggio.instance.HealPlayer();
+        }*/
 
 
     }
@@ -317,14 +326,14 @@ public class PlayerControllerPlatform : MonoBehaviour
     IEnumerator CountDownJump()
     {
         jumpHeight += 10f;
-        yield return new WaitForSeconds(powerTimeOut);
+        yield return new WaitForSeconds(powerTimeOut+3);
         jumpHeight -= 10f;
         powerUpActive = false;
     }
     IEnumerator CountDownSpeed() {
 
         runSpeed += 10f;
-        yield return new WaitForSeconds(powerTimeOut);
+        yield return new WaitForSeconds(powerTimeOut+5);
         runSpeed -= 10f;
         powerUpActive = false;
     }

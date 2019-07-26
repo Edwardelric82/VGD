@@ -75,7 +75,7 @@ public class EnemyControllerPlatformv2: MonoBehaviour
             else
             {
                 state = State.Patrol;
-                agent.SetDestination(patrolPoints[patrolPoint].position);
+                //agent.SetDestination(patrolPoints[patrolPoint].position);
             }
         }
     }

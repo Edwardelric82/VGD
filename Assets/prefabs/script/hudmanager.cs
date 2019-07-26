@@ -66,9 +66,9 @@ public class hudmanager : MonoBehaviour
         {
             case 1:
                 {
-                    hearts[1].gameObject.SetActive(true);
+                    hearts[0].gameObject.SetActive(true);
+                    hearts[1].gameObject.SetActive(false);
                     hearts[2].gameObject.SetActive(false);
-                    hearts[3].gameObject.SetActive(false);
 
 
                 }
@@ -77,9 +77,9 @@ public class hudmanager : MonoBehaviour
 
             case 2:
                 {
+                    hearts[0].gameObject.SetActive(true);
                     hearts[1].gameObject.SetActive(true);
-                    hearts[2].gameObject.SetActive(true);
-                    hearts[3].gameObject.SetActive(false);
+                    hearts[2].gameObject.SetActive(false);
 
 
                 }
@@ -88,9 +88,9 @@ public class hudmanager : MonoBehaviour
 
             case 3:
                 {
+                    hearts[0].gameObject.SetActive(true);
                     hearts[1].gameObject.SetActive(true);
                     hearts[2].gameObject.SetActive(true);
-                    hearts[3].gameObject.SetActive(true);
 
                 }
                 break;
