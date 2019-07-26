@@ -23,6 +23,8 @@ TagManager:
   - RespawnBoss
   - platboss
   - vita
+  - platbosstop
+  - Violet_Sound
   layers:
   - Default
   - TransparentFX
