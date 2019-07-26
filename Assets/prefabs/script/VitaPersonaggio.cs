@@ -49,6 +49,7 @@ public class VitaPersonaggio: MonoBehaviour
         {
             PlayerControllerPlatform.instance.Knockback();
             invincibleTimer = invincibleDuration;
+            print("Madonna");
         }
 
         //AudioManager.instance.PlayEffect(AudioManager.SFX.TakeDamage);
@@ -69,10 +70,13 @@ public class VitaPersonaggio: MonoBehaviour
 
     public void HealPlayer()
     {
-        health = Mathf.Min(health + 1, maxHealth);
+        if (GameManager.Instance.score % 25 == 0 && GameManager.Instance.score >=25)
+        {
+            health = Mathf.Min(health + 1, maxHealth);
 
-        HudLife();
-       // UpdateUI();
+            HudLife();
+            // UpdateUI();
+        }
     }
 
     public void HudLife()
