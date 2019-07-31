@@ -32,6 +32,13 @@ public class PlayerControllerPlatform : MonoBehaviour
 
     public AudioSource winesuono;
 
+    public AudioSource keyCollected;
+
+    public AudioSource powerUp;
+
+    public AudioSource powerDown;
+
+
     public GameObject sfera;
     
 
@@ -237,6 +244,8 @@ public class PlayerControllerPlatform : MonoBehaviour
 
             key = true;
 
+            keyCollected.Play();
+
             sfera.SetActive(true);
 
             Destroy(other.gameObject);
@@ -289,6 +298,7 @@ public class PlayerControllerPlatform : MonoBehaviour
         else if (other.gameObject.tag == "PowerJump" && powerUpActive == false)
         {
             powerUpActive = true;
+            powerUp.Play();
             Destroy(other.gameObject);
             StartCoroutine(CountDownJump());
 
@@ -296,6 +306,7 @@ public class PlayerControllerPlatform : MonoBehaviour
         else if (other.gameObject.tag == "PowerSpeed" && powerUpActive == false)
         {
             powerUpActive = true;
+            powerUp.Play();
             Destroy(other.gameObject);
             StartCoroutine(CountDownSpeed());
 
@@ -303,6 +314,7 @@ public class PlayerControllerPlatform : MonoBehaviour
         else if (other.gameObject.tag == "PowerDown" && powerUpActive == false)
         {
             powerUpActive = true;
+            powerDown.Play();
             Destroy(other.gameObject);
             StartCoroutine(CountDownDown());
 

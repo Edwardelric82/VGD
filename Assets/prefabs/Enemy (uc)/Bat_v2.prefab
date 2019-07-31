@@ -509,6 +509,11 @@ PrefabInstance:
       propertyPath: m_Acceleration
       value: 400
       objectReference: {fileID: 0}
+    - target: {fileID: 9035149137711461148, guid: 5fd1210210040d34e8810388185a6063,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 95000013319663098, guid: 5fd1210210040d34e8810388185a6063,
         type: 3}
       propertyPath: m_Controller

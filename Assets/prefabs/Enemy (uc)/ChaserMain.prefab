@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9129828216769239884}
   - component: {fileID: 4521227675551354432}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: Chaser_sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

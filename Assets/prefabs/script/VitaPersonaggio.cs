@@ -10,6 +10,10 @@ public class VitaPersonaggio: MonoBehaviour
     public float invincibleDuration = 2f;
     private float invincibleTimer;
 
+
+    public AudioSource vitaUp;
+    //public AudioSource lastLife;
+
     private void Awake()
     {
         instance = this;
@@ -44,8 +48,12 @@ public class VitaPersonaggio: MonoBehaviour
         {
             
             GameManager.Instance.GameOver();
-        }
-        else
+            print("diocan");
+        }/*else if (health == 1)
+        {
+            lastLife.Play();
+        }*/
+        else 
         {
             PlayerControllerPlatform.instance.Knockback();
             invincibleTimer = invincibleDuration;
@@ -73,7 +81,7 @@ public class VitaPersonaggio: MonoBehaviour
         if (GameManager.Instance.score % 25 == 0 && GameManager.Instance.score >=25)
         {
             health = Mathf.Min(health + 1, maxHealth);
-
+            vitaUp.Play();
             HudLife();
             // UpdateUI();
         }

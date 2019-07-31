@@ -11,6 +11,8 @@ public class EnemyController : MonoBehaviour
 
     public float direction = 1f;
 
+    public AudioSource Violet_sound;
+
     Vector3 initialPosition;
 
     Transform player;
@@ -49,12 +51,17 @@ public class EnemyController : MonoBehaviour
         */
             // ... set the destination of the nav mesh agent to the player.
             nav.SetDestination(player.position);
+
+       
         
-        
-
-
-
-
-
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        {
+            if (other.gameObject.tag == "Player")
+            {
+                Violet_sound.Play();
+            }
+        }
     }
 }

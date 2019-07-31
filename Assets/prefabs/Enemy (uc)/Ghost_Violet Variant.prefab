@@ -85,6 +85,7 @@ MonoBehaviour:
   rangeY: 2
   speed: 1
   direction: 1
+  Violet_sound: {fileID: 9032749772682923931}
 --- !u!1 &2022681954049212546
 GameObject:
   m_ObjectHideFlags: 0

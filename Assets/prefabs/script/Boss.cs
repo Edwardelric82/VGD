@@ -81,6 +81,8 @@ public class Boss : MonoBehaviour
 
                 sphere.SetActive(true);
 
+                GameManager.Instance.GameComplete();
+
             }
             state = State.Death;
         }

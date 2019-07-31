@@ -20,7 +20,9 @@ public class GameManager : MonoBehaviour {
 
     private GameObject player ;
 
-
+    /*public AudioSource gameOver;
+    
+    public AudioSource levelComplete;*/
 
     public GameObject spawn;
 
@@ -168,6 +170,7 @@ public class GameManager : MonoBehaviour {
     {
         Cursor.visible = true;
         SceneManager.LoadScene("Level Complete");
+        //levelComplete.Play();
     }
 
     public void GameComplete()
@@ -181,6 +184,7 @@ public class GameManager : MonoBehaviour {
     {
         Cursor.visible = true;
 
+        //gameOver.Play();
         SceneManager.LoadScene("Game Over");
     }
 
